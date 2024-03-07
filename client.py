@@ -1,13 +1,20 @@
-"""
-Write a program to count the number of vowels in a string.
-"""
+import socket
 
-vowels = ['a','i','u','e','o']
-mystring = "big boy bonglous"
-counter = 0
+def run_client():
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_address = ("127.0.0.1", 12345)
+    client_socket.connect(server_address)
 
-for x in mystring:
-    if x in vowels:
-        counter+=1
+    try:
+        message = input("enter a message: ")
+        client_socket.sendall(message.encode())
 
-print("ur strring got this many vowels: ", counter)
+        data = client_socket.recv(1024)
+
+        print("Message received:", data.decode())
+
+    finally:
+        client_socket.close()
+
+if __name__ == "__main__":
+    run_client()
