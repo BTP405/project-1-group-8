@@ -16,7 +16,8 @@ Goal: Serve as many customers as you can in the given time, try and get a high s
 2. Open it in visual studio code
 3. Make sure you have python installed, install it if you don't
 4. Run ```python3 -m pip install -U pygame --user``` to install pygame
-5. Run main.py and enjoy
+5. Run ``` python -m pip install "pymongo[srv]"``` to install mongo
+6. Run main.py and enjoy
 
 ## 3. Usage
     - Examples: Include examples or code snippets to demonstrate how to use your project.
