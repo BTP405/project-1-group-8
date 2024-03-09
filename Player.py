@@ -151,3 +151,4 @@ class Player(pygame.sprite.Sprite):
             self.move(keyPressed) # player move
             if keyPressed[pygame.K_SPACE]: # player selection
                 return self.select(currentTime, foodGroup, customer)
+                

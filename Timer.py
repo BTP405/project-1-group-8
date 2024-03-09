@@ -61,3 +61,4 @@ class Timer:
         Returns True if timer duration is 0.
         """
         return self.duration == 0
+    

@@ -66,3 +66,4 @@ class SatisfactionBar(pygame.sprite.Sprite):
         """
         # screen, color, x, y, width, height
         pygame.draw.rect(screen, (251, 180, 200), (300, 10, (self.satisfactionValue), 30))
+         

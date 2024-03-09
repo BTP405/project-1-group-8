@@ -62,3 +62,4 @@ class Customer(pygame.sprite.Sprite):
         Sets showOrder flag to True
         """
         self.showOrder = True
+    
