@@ -1,4 +1,5 @@
 import pygame
+from pymongo import MongoClient
 
 from Timer import Timer
 from SatisfactionBar import SatisfactionBar
@@ -27,6 +28,8 @@ class GameManager():
         playerGroup (SpriteGroup): The sprite group for Player object.
         foodGroup (SpriteGroup): The sprite group for FoodDisplay objects.
         cusGroup (SpriteGroup): The sprite group for Customer objects.
+        uri (str): Connection uri.
+        client (MongoClient): The mongo client.
     """
 
     def __init__(self):
@@ -47,6 +50,9 @@ class GameManager():
         self.playerGroup = pygame.sprite.Group(Player(self.screenWidth // 2 - 150, self.screenHeight // 2 + 200))
         self.foodGroup = pygame.sprite.Group()
         self.cusGroup = pygame.sprite.Group()
+
+        self.uri = "mongodb+srv://javier:O3bnYO9Cx0GUzMEO@cluster0.xlzcpze.mongodb.net/?retryWrites=true&w=majority"
+        self.client = MongoClient(self.uri) # Create a new client and connect to the server
 
     def spawnCustomers(self):
         """
@@ -177,6 +183,8 @@ class GameManager():
         Args:
             message (str): The end message to print.
         """
+        playerName = ""
+        scoreSaved = False
         while True:
             self.screen.blit(pygame.image.load("sprites/end.jpg"), (0, 0))
             font = pygame.font.Font(None, 48)
@@ -184,7 +192,19 @@ class GameManager():
             text_rect = text.get_rect()
             text_rect.center = (self.screenWidth // 2, self.screenHeight // 4)
             self.screen.blit(text, text_rect)
-            pygame.display.update()
+
+            if not scoreSaved:
+                input_font = pygame.font.Font(None, 36)
+                input_text = input_font.render("Start typing to input your name and press ENTER to save your score:", True, (0, 0, 0))
+                input_text_rect = input_text.get_rect()
+                input_text_rect.center = (self.screenWidth // 2, self.screenHeight // 2 + 250)
+                self.screen.blit(input_text, input_text_rect)
+                
+                playerNameFont = pygame.font.Font(None, 36)
+                playerNameText = playerNameFont.render(playerName, True, (0, 0, 0))
+                playerNameRect = playerNameText.get_rect()
+                playerNameRect.center = (self.screenWidth // 2, self.screenHeight // 2 + 275)
+                self.screen.blit(playerNameText, playerNameRect)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -201,6 +221,18 @@ class GameManager():
                         pygame.quit()
                     elif event.key == pygame.K_e:
                         self.leaderBoard()
+                    elif event.key == pygame.K_RETURN:
+                        scoreSaved = True
+                        leaderboardData = {"name": playerName, "score": self.playerGroup.sprites()[0].getScore()},
+                        db = self.client['gameDatabase']
+                        leaderboard = db['leaderboard']
+                        leaderboard.insert_many(leaderboardData)
+                    elif event.unicode.isalnum() and len(playerName) < 10 and not scoreSaved:
+                        playerName += event.unicode
+                    elif event.key == pygame.K_BACKSPACE and not scoreSaved:
+                        playerName = playerName[:-1]
+            pygame.display.update()
+
         
     def leaderBoard(self):
         """
@@ -208,6 +240,18 @@ class GameManager():
         """
         while True:
             self.screen.blit(pygame.image.load("sprites/leaderBoard.jpg"), (0, 0))
+
+            db = self.client['gameDatabase']
+            leaderboard = db['leaderboard']
+            leaderboardData = leaderboard.find().sort("score", -1).limit(5)
+            
+            count = 0
+            for player in leaderboardData:
+                font = pygame.font.Font(None, 48)
+                text = font.render(f"{count+1}. {player['name']}: {player['score']}", True, (0, 0, 0))
+                self.screen.blit(text, (self.screenWidth // 2 - 100, 125 + count*50))
+                count += 1
+
             for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         pygame.quit()
