@@ -20,8 +20,11 @@ Goal: Serve as many customers as you can in the given time, try and get a high s
 6. Run main.py and enjoy
 
 ## 3. Usage
-    - Examples: Include examples or code snippets to demonstrate how to use your project.
-    - Configuration: Explain any configuration options or settings users might need to know about.
+If the game stays as a black screen on startup for a little, it is due to the database connecting so give it a bit.
+
+![image](https://github.com/BTP405/project-1-group-8/assets/158524348/cda46b38-bf15-47a6-9116-8f9dc6c7db01)
+
+![image](https://github.com/BTP405/project-1-group-8/assets/158524348/100e6116-5196-42ad-bd3a-ffce51564373)
 
 ## 4. Features
 Serve an endless stream of cat customers by matching their orders. Save your score to the leaderboard and try and beat your high score! 
@@ -35,7 +38,8 @@ Code Style: camelCase, inline comments.
 Authors: Almas Zahra, Javier Dario, Itzel velez
 
 Acknowledgments: 
-- CodingWithRuss for pygame tutorials
+- Kirby's Forgotten Land Waddledee Cafe, gameplay inspiration
+- CodingWithRuss, for pygame tutorials
 - HeartsandLines, Vacuum for art inspiration 
 
 ## 7. License
