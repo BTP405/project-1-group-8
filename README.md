@@ -5,9 +5,9 @@
 ## 1. Project Title and Description
 Sugar Pawradise is a cafe game where you play as a little girl serving sweets to her cat customers.\
 Controls:
-- A/D to move\
-- SPACE to select food\
-- ESC to pause\
+- A/D to move
+- SPACE to select food
+- ESC to pause
 
 Goal: Serve as many customers as you can in the given time, try and get a high score! Look out for the satisfaction bar at the top, if it reaches 0, you lose!
     
@@ -21,25 +21,21 @@ Goal: Serve as many customers as you can in the given time, try and get a high s
 ## 3. Usage
     - Examples: Include examples or code snippets to demonstrate how to use your project.
     - Configuration: Explain any configuration options or settings users might need to know about.
-## 4. Features
-    - List of Features: Outline the main features and functionalities of your project.
-## 5. Contributing
-    - Guidelines: For contributions, bug reports, feature requests, or code contributions, email javierdario@myseneca.ca
-    - Code Style: camelCase, inline comments.
-## 6. Credits
-    - Authors: Almas Zahra, Javier Dario, Itzel velez
-    - Acknowledgments: Mention any individuals or resources that helped inspire or support your project.
-## 7. License
-    - License Information: Specify the license under which your project is distributed.
-## 8. Additional Sections (Optional)
-    - FAQ: Include frequently asked questions and their answers.
-    - Troubleshooting: Provide solutions to common issues or troubleshooting tips.
-    - Roadmap: Outline the future development plans for your project.
-    - Changelog: Document changes and updates to your project over time.
 
-## Markdown Formatting Tips
-  - Use headings (#, ##, ###, etc.) to structure your document.
-  - Utilize lists (- or 1.) for easy-to-read information.
-  - Include links to relevant resources or documentation.
-  - Add code blocks using triple backticks (```) for code snippets.
-  - Use images or diagrams to enhance understanding where applicable.
+## 4. Features
+Serve an endless stream of cat customers by matching their orders. Save your score to the leaderboard and try and beat your high score! 
+
+## 5. Contributing
+For contributions, bug reports, feature requests, or code contributions, email javierdario@myseneca.ca
+
+Code Style: camelCase, inline comments.
+    
+## 6. Credits
+Authors: Almas Zahra, Javier Dario, Itzel velez
+
+Acknowledgments: 
+- CodingWithRuss for pygame tutorials
+- HeartsandLines, Vacuum for art inspiration 
+
+## 7. License
+This project is distributed under a Creative Commons Zero (CC0) License
